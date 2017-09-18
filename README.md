@@ -32,7 +32,7 @@ $this->random->alpha()->get();
 Should give you 16 chars (default size) string 
 
 ``` text
-   hjv3ejknlmqwç36hAWiz
+   Ajv3ejknLmqwC36z
 ```
 
 #### Defining the size
