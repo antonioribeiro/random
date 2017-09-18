@@ -89,6 +89,24 @@ class RandomTest extends \PHPUnit\Framework\TestCase
 
         $this->assertTrue(strlen($this->random->size($size = 2048)->get()) == $size);
     }
+
+    public function testHex()
+    {
+        $this->assertTrue(strlen($this->random->hex()->get()) == 16);
+
+        $this->assertTrue(strlen($string = $this->random->size($size = 8192)->hex()->get()) == $size);
+
+        $this->assertTrue(preg_match('/^[A-F0-9]+$/', $string) == 1);
+
+        $this->assertFalse(preg_match('/^[a-zE-Z]+$/', $string) == 1);
+    }
+
+    public function testNoPattern()
+    {
+        $this->assertTrue(strlen($string = $this->random->noPattern()->size(256)->get()) == 256);
+
+        $this->assertFalse(preg_match('/^[a-zA-F0-9]+$/', $string) == 1);
+    }
 }
 
 function dd($a)

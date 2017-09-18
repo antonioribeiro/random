@@ -9,6 +9,17 @@
 
 Generate random strings / numbers
 
+## Features
+
+It can generate:
+
+- Strings
+- Numbers (string or integers)
+- Hexadecimal
+- Patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
+- Upper and lower and mixed case
+- Cryptographically secure random bytes (from `random_bytes()`)
+
 ## Install
 
 Via Composer
@@ -60,6 +71,8 @@ The pattern method uses regex, so you can:
 
 ``` php
 $this->random->pattern('[abcd]')->get();
+
+$this->random->pattern('[A-F0-9]')->get(); /// Hexadecimal
 ```
 
 To get
@@ -92,6 +105,14 @@ You'll get a string
 
 ``` text
    (string) 123
+```
+
+#### Disable character filter 
+
+Usually the package returns characters in the range of Base64 (A to Z, a to z and 0 to 9), but you can disable this and make it return whatever random_bytes returns: 
+
+``` php
+$this->random->noPattern()->get();
 ```
 
 ## Change log

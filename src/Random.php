@@ -4,7 +4,9 @@ namespace PragmaRX\Random;
 
 class Random
 {
-    const STRING_DEFAULT_SIZE = 16;
+    const DEFAULT_STRING_SIZE = 16;
+
+    const DEFAULT_PATTERN = '[A-Za-z0-9]';
 
     protected $lowercase = false;
 
@@ -18,7 +20,7 @@ class Random
 
     protected $size = null;
 
-    protected $pattern = null;
+    protected $pattern = '[A-Za-z0-9]';
 
     /**
      * Extract a string pattern from a string.
@@ -79,7 +81,7 @@ class Random
     private function getAlphaGenerator()
     {
         return function ($size) {
-            return str_replace(['/', '+', '='], '', base64_encode(random_bytes($size)));
+            return random_bytes($size);
         };
     }
 
@@ -112,7 +114,7 @@ class Random
      */
     private function generateNumeric()
     {
-        if (is_null($this->size) && is_null($this->pattern)) {
+        if (is_null($this->size) && $this->pattern == static::DEFAULT_PATTERN) {
             return $this->generateInteger();
         }
 
@@ -140,13 +142,25 @@ class Random
     }
 
     /**
+     * Get string pattern.
+     *
+     * @return string
+     */
+    public function noPattern()
+    {
+        $this->pattern = null;
+
+        return $this;
+    }
+
+    /**
      * Get the final string size.
      *
      * @return integer
      */
     public function getSize()
     {
-        return $this->size ?: static::STRING_DEFAULT_SIZE;
+        return $this->size ?: static::DEFAULT_STRING_SIZE;
     }
 
     /**
@@ -177,6 +191,18 @@ class Random
     public function isUppercase()
     {
         return $this->uppercase;
+    }
+
+    /**
+     * Generate a random hex.
+     *
+     * @return string
+     */
+    public function hex()
+    {
+        $this->pattern('[a-f0-9]')->uppercase();
+
+        return $this;
     }
 
     /**
