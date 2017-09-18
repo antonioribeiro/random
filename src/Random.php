@@ -20,6 +20,12 @@ class Random
 
     protected $pattern = null;
 
+    /**
+     * Extract a string pattern from a string.
+     *
+     * @param $string
+     * @return string
+     */
     private function extractPattern($string)
     {
         if (is_null($pattern = $this->getPattern())) {

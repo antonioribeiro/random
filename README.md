@@ -48,6 +48,12 @@ $this->random->uppercase()->get();
 $this->random->lowercase()->size(255)->get();
 ```
 
+To get back to mixed case you can just:
+
+``` php
+$this->random->mixedcase()->get();
+```
+
 #### Defining a pattern
 
 The pattern method uses regex, so you can:
