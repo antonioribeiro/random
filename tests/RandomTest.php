@@ -82,6 +82,13 @@ class RandomTest extends \PHPUnit\Framework\TestCase
         $string = $this->random->size(16)->pattern('[z]')->get(); // lowercase == false
         $this->assertEquals(str_repeat('z', 16), $string);
     }
+
+    public function testGetSize()
+    {
+        $this->assertTrue(strlen($this->random->get()) == 16);
+
+        $this->assertTrue(strlen($this->random->size($size = 2048)->get()) == $size);
+    }
 }
 
 function dd($a) {

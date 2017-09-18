@@ -142,11 +142,11 @@ class Random
     /**
      * Get the final string size.
      *
-     * @return null|integer
+     * @return integer
      */
     public function getSize()
     {
-        return $this->size;
+        return $this->size ?: static::STRING_DEFAULT_SIZE;
     }
 
     /**
