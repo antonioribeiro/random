@@ -84,6 +84,8 @@ class RandomTest extends \PHPUnit\Framework\TestCase
     }
 }
 
-function dd($a) {
-    var_dump($a); die;
+function dd($a)
+{
+    var_dump($a);
+    die;
 }
