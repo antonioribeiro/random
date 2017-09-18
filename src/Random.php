@@ -142,7 +142,7 @@ class Random
     /**
      * Get the final string size.
      *
-     * @return null
+     * @return null|integer
      */
     public function getSize()
     {
