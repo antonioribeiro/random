@@ -4,7 +4,11 @@
     "description": "Create random chars, numbers, strings",
     "keywords": [
         "pragmarx",
-        "random"
+        "random",
+        "randomize",
+        "random string",
+        "random number",
+        "random pattern"
     ],
     "homepage": "https://github.com/antonioribeiro/random",
     "license": "MIT",
