@@ -7,9 +7,9 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/antonioribeiro/random/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/antonioribeiro/random/?branch=master)
 [![StyleCI](https://styleci.io/repos/103568219/shield)](https://styleci.io/repos/103568219)
 
-## Generate secure random strings, numbers, bytes, patterns, and a lot more
+#### Generate secure random strings, numbers, bytes, patterns, and a lot more
 
-### Features
+## Features
 
 It generates cryptographically secure random bytes (using `random_bytes()` and `random_int()`) to make:
 
@@ -21,11 +21,11 @@ It generates cryptographically secure random bytes (using `random_bytes()` and `
 - Regex patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
 - Raw strings, giving you whatever `random_bytes()` generates
 
-#### Faker
+### Faker
 
 If you have [Faker](https://github.com/fzaninotto/Faker) installed it falls back to it, giving you access to random names, dates, cities, phones, and a lot more.
 
-### Install
+## Install
 
 Via Composer
 
@@ -33,9 +33,9 @@ Via Composer
 $ composer require pragmarx/random
 ```
 
-### Usage
+## Usage
 
-##### Basic array usage
+#### Basic array usage
 
 ``` php
 $this->random = new PragmaRX\Random\Random();
@@ -51,13 +51,13 @@ Should give you 16 chars (default size) string
    Ajv3ejknLmqwC36z
 ```
 
-##### Defining the size
+#### Defining the size
 
 ``` php
 $this->random->size(32)->get();
 ```
 
-##### Upper and lower case
+#### Upper and lower case
 
 ``` php
 $this->random->uppercase()->get();
@@ -70,7 +70,7 @@ To get back to mixed case you can just:
 $this->random->mixedcase()->get();
 ```
 
-##### Defining a pattern
+#### Defining a pattern
 
 The pattern method uses regex, so you can:
 
@@ -86,7 +86,7 @@ To get
    abcddcbabbacbbdabbcb
 ```
 
-##### Numeric and Integer 
+#### Numeric and Integer 
 
 The pattern method uses regex, so you can:
 
@@ -112,7 +112,7 @@ You'll get a string
    (string) 123
 ```
 
-##### Hexadecimal 
+#### Hexadecimal 
 
 ``` php
 $this->random->hex()->size(10)->get();
@@ -124,7 +124,7 @@ Hexadecimal is uppercase by default, but you can get a lowercase by doing:
 $this->random->hex()->lowercase()->get();
 ```
 
-##### Prefix && Suffix 
+#### Prefix && Suffix 
 
 ``` php
 $this->random->hex()->prefix('#')->size(6)->lowercase()->get();
@@ -142,7 +142,7 @@ Of course, the same works for suffixes
 $this->random->prefix('!')->suffix('@')->get();
 ```
 
-##### Faker
+#### Faker
 
 If you install Faker
 
@@ -168,7 +168,7 @@ You can also change the faker class, you another one pleases you more:
 $this->random->fakerClass(AnotherFaker\Factory::class)->date()->get();
 ```
 
-##### Raw strings
+#### Raw strings
 
 Usually the package returns characters in the range of Base64 (A to Z, a to z and 0 to 9), but you can completely disable this feature and make it return whatever `random_bytes()` generates: 
 
@@ -176,30 +176,30 @@ Usually the package returns characters in the range of Base64 (A to Z, a to z an
 $this->random->raw()->get();
 ```
 
-### Change log
+## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-### Testing
+## Testing
 
 ``` bash
 $ composer update
 $ vendor/bin/phpunit
 ```
 
-### Contributing
+## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Security
+## Security
 
 If you discover any security related issues, please email acr@antoniocarlosribeiro.com instead of using the issue tracker.
 
-### Credits
+## Credits
 
 - [Antonio Carlos Ribeiro][link-author]
 
-### License
+## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
