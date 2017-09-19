@@ -20,6 +20,38 @@ class Random
 
     protected $pattern = '[A-Za-z0-9]';
 
+    private $prefix;
+
+    private $suffix;
+
+    /**
+     * Get a prefixed and/or suffixed string.
+     *
+     * @param $value
+     * @return string
+     */
+    private function addPrefixSuffix($value)
+    {
+        if (!is_null($this->prefix) || !is_null($this->suffix)) {
+            return (string) $this->prefix . $value . (string) $this->suffix;
+        }
+
+        return $value;
+    }
+
+    /**
+     * Set the string suffix.
+     *
+     * @param $string
+     * @return $this
+     */
+    public function suffix($string)
+    {
+        $this->suffix = $string;
+
+        return $this;
+    }
+
     /**
      * Extract a string pattern from a string.
      *
@@ -115,6 +147,19 @@ class Random
     }
 
     /**
+     * Set the string prefix.
+     *
+     * @param $string
+     * @return $this
+     */
+    public function prefix($string)
+    {
+        $this->prefix = $string;
+
+        return $this;
+    }
+
+    /**
      * Trim string to expected size.
      *
      * @param $string
@@ -166,6 +211,20 @@ class Random
     }
 
     /**
+     * Reset one-time values.
+     *
+     * @return $this
+     */
+    public function resetOneTimeValues()
+    {
+        $this->prefix = null;
+
+        $this->suffix = null;
+
+        return $this;
+    }
+
+    /**
      * Set numeric start.
      *
      * @param int $start
@@ -177,7 +236,6 @@ class Random
 
         return $this;
     }
-
 
     /**
      * Set the return string size.
@@ -193,16 +251,20 @@ class Random
     }
 
     /**
-     * Generate a more truly "random" alpha-numeric string.
-     *
-     * Extracted from Laravel Framework: Illuminate\Support\Str
+     * Get the generated random string/number.
      *
      * @return string|int
      */
     public function get()
     {
-        return $this->changeCase(
-            $this->generate()
+        $result = $this->addPrefixSuffix(
+            $this->changeCase(
+                $this->generate()
+            )
         );
+
+        $this->resetOneTimeValues();
+
+        return $result;
     }
 }

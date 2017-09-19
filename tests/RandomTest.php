@@ -107,6 +107,24 @@ class RandomTest extends \PHPUnit\Framework\TestCase
 
         $this->assertFalse(preg_match('/^[a-zA-F0-9]+$/', $string) == 1);
     }
+
+    public function testPrefix()
+    {
+        $string = $this->random->hex()->prefix('#')->size(6)->lowercase()->get();
+
+        $this->assertTrue(strlen($string) == 7);
+
+        $this->assertTrue(preg_match('/^#{1}[a-f0-9]{6}$/', $string) == 1);
+    }
+
+    public function testSuffix()
+    {
+        $string = $this->random->hex()->suffix('####')->size(16)->lowercase()->get();
+
+        $this->assertTrue(strlen($string) == 20);
+
+        $this->assertTrue(preg_match('/^[a-f0-9]{16}#{4}$/', $string) == 1);
+    }
 }
 
 function dd($a)

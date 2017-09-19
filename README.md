@@ -15,6 +15,7 @@ It can generate:
 
 - Strings
 - Numbers (string or integers)
+- Prefixed and suffixed random strings
 - Hexadecimal
 - Patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
 - Upper, lower and mixed case
@@ -117,6 +118,24 @@ Hexadecimal is uppercase by default, but you can get a lowercase by doing:
 
 ``` php
 $this->random->hex()->lowercase()->get();
+```
+
+#### Prefix && Suffix 
+
+``` php
+$this->random->hex()->prefix('#')->size(6)->lowercase()->get();
+```
+
+And you should get a random CSS color: 
+
+``` text
+#fafafa
+```
+
+Of course, the same works for suffixes 
+
+``` php
+$this->random->prefix('!')->suffix('@')->get();
 ```
 
 #### Disable character filter 
