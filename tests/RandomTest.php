@@ -145,7 +145,7 @@ class RandomTest extends \PHPUnit\Framework\TestCase
 
         $this->expectExceptionMessage('Faker is not installed. Call to undefined method PragmaRX\Random\Random::word');
 
-        $this->assertCount(4, $this->random->setFakerClass('Unavailable\Namespace\FakerClass')->words(4)->get());
+        $this->assertCount(4, $this->random->fakerClass('Unavailable\Namespace\FakerClass')->words(4)->get());
     }
 }
 

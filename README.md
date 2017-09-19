@@ -158,6 +158,12 @@ And also use all other features of Random
 $this->random->prefix('city: ')->city()->lowercase()->get();
 ```
 
+You can also change the faker class, you another one pleases you more:
+
+``` php
+$this->random->fakerClass(AnotherFaker\Factory::class)->date()->get();
+```
+
 #### Disable character filter 
 
 Usually the package returns characters in the range of Base64 (A to Z, a to z and 0 to 9), but you can disable this and make it return whatever random_bytes returns: 

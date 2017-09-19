@@ -11,6 +11,25 @@ trait Faker
     protected $fakerString;
 
     /**
+     * Call faker.
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     * @throws \Exception
+     */
+    public function __call($name, $arguments)
+    {
+        try {
+            $this->fakerString = $this->getFaker()->{$name}(...$arguments);
+        } catch(\Error $e) {
+            throw new \Exception('Faker is not installed. Call to undefined method PragmaRX\Random\Random::'.$name);
+        }
+
+        return $this;
+    }
+
+    /**
      * Instantiate and get Faker.
      *
      * @return \Faker\Generator|null
@@ -24,7 +43,13 @@ trait Faker
         return $this->faker;
     }
 
-    public function setFakerClass($class)
+    /**
+     * Set the faker class.
+     *
+     * @param $class
+     * @return $this
+     */
+    public function fakerClass($class)
     {
         $this->fakerClass = $class;
 
