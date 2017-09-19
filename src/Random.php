@@ -4,7 +4,7 @@ namespace PragmaRX\Random;
 
 class Random
 {
-    use Generators, CharCase;
+    use Generators, CharCase, Faker;
 
     const DEFAULT_STRING_SIZE = 16;
 
@@ -23,6 +23,25 @@ class Random
     private $prefix;
 
     private $suffix;
+
+    /**
+     * Call faker.
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     * @throws \Exception
+     */
+    public function __call($name, $arguments)
+    {
+        try {
+            $this->fakerString = $this->getFaker()->{$name}(...$arguments);
+        } catch(\Error $e) {
+            throw new \Exception('Faker is not installed. Call to undefined method PragmaRX\Random\Random::'.$name);
+        }
+
+        return $this;
+    }
 
     /**
      * Get a prefixed and/or suffixed string.
@@ -220,6 +239,8 @@ class Random
         $this->prefix = null;
 
         $this->suffix = null;
+
+        $this->fakerString = null;
 
         return $this;
     }

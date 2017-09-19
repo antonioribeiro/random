@@ -11,15 +11,15 @@ Generate random strings / numbers
 
 ## Features
 
-It can generate:
-
+It generates cryptographically secure random bytes (from `random_bytes()`) for:
 - Strings
 - Numbers (string or integers)
 - Prefixed and suffixed random strings
 - Hexadecimal
 - Patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
 - Upper, lower and mixed case
-- Cryptographically secure random bytes (from `random_bytes()`)
+
+And also, if you have Faker installed, it will also provide everything you can find on [Faker](https://github.com/fzaninotto/Faker).
 
 ## Install
 
@@ -136,6 +136,26 @@ Of course, the same works for suffixes
 
 ``` php
 $this->random->prefix('!')->suffix('@')->get();
+```
+
+#### Faker
+
+If you install Faker
+
+``` bash
+composer require fzaninotto/faker
+```
+   
+You'll also have access to all of the Faker features, like:
+   
+``` php
+$this->random->city()->get();
+```
+
+And also use all other features of Random
+   
+``` php
+$this->random->prefix('city: ')->city()->lowercase()->get();
 ```
 
 #### Disable character filter 

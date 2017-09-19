@@ -125,6 +125,28 @@ class RandomTest extends \PHPUnit\Framework\TestCase
 
         $this->assertTrue(preg_match('/^[a-f0-9]{16}#{4}$/', $string) == 1);
     }
+
+    public function testFaker()
+    {
+        $this->assertCount(4, $this->random->words(4)->get());
+
+        $city = $this->random->prefix('city: ')->city()->lowercase()->get();
+
+        $this->assertNotNull($city);
+
+        $this->assertFalse(preg_match('/^city:\s[\sA-Z0-9]+$/', $city) == 1);
+        $this->assertTrue(preg_match('/^city:\s[\sa-z0-9]+$/', $city) == 1);
+        $this->assertTrue(preg_match('/^city:\s[\sa-zA-Z0-9]+$/', $city) == 1);
+    }
+
+    public function testFakerNotFound()
+    {
+        $this->expectException(\Exception::class);
+
+        $this->expectExceptionMessage('Faker is not installed. Call to undefined method PragmaRX\Random\Random::word');
+
+        $this->assertCount(4, $this->random->setFakerClass('Unavailable\Namespace\FakerClass')->words(4)->get());
+    }
 }
 
 function dd($a)

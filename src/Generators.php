@@ -11,6 +11,10 @@ trait Generators
      */
     protected function generate()
     {
+        if (! is_null($this->fakerString)) {
+            return $this->fakerString;
+        }
+
         return $this->numeric
             ? $this->generateNumeric()
             : $this->generateAlpha();
