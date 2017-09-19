@@ -17,7 +17,7 @@ It can generate:
 - Numbers (string or integers)
 - Hexadecimal
 - Patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
-- Upper and lower and mixed case
+- Upper, lower and mixed case
 - Cryptographically secure random bytes (from `random_bytes()`)
 
 ## Install
@@ -105,6 +105,18 @@ You'll get a string
 
 ``` text
    (string) 123
+```
+
+#### Hexadecimal 
+
+``` php
+$this->random->hex()->size(10)->get();
+```
+
+Hexadecimal is uppercase by default, but you can get a lowercase by doing:
+
+``` php
+$this->random->hex()->lowercase()->get();
 ```
 
 #### Disable character filter 
