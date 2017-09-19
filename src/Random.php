@@ -4,13 +4,11 @@ namespace PragmaRX\Random;
 
 class Random
 {
+    use CharCase;
+    
     const DEFAULT_STRING_SIZE = 16;
 
     const DEFAULT_PATTERN = '[A-Za-z0-9]';
-
-    protected $lowercase = false;
-
-    protected $uppercase = false;
 
     protected $numeric = false;
 
@@ -28,7 +26,7 @@ class Random
      * @param $string
      * @return string
      */
-    private function extractPattern($string)
+    protected function extractPattern($string)
     {
         if (is_null($pattern = $this->getPattern())) {
             return $string;
@@ -51,7 +49,7 @@ class Random
             : $this->generateAlpha();
     }
 
-    private function generateInteger()
+    protected function generateInteger()
     {
         return random_int($this->getStart(), $this->getEnd());
     }
@@ -62,7 +60,7 @@ class Random
      * @param \Closure $generator
      * @return mixed
      */
-    private function generateString($generator)
+    protected function generateString($generator)
     {
         $string = '';
 
@@ -78,7 +76,7 @@ class Random
      *
      * @return mixed
      */
-    private function getAlphaGenerator()
+    protected function getAlphaGenerator()
     {
         return function ($size) {
             return random_bytes($size);
@@ -90,7 +88,7 @@ class Random
      *
      * @return mixed
      */
-    private function getNumericGenerator()
+    protected function getNumericGenerator()
     {
         return function () {
             return random_int(0, PHP_INT_MAX);
@@ -102,7 +100,7 @@ class Random
      *
      * @return int|string
      */
-    private function generateAlpha()
+    protected function generateAlpha()
     {
         return $this->generateString($this->getAlphaGenerator());
     }
@@ -112,7 +110,7 @@ class Random
      *
      * @return int|string
      */
-    private function generateNumeric()
+    protected function generateNumeric()
     {
         if (is_null($this->size) && $this->pattern == static::DEFAULT_PATTERN) {
             return $this->generateInteger();
@@ -174,26 +172,6 @@ class Random
     }
 
     /**
-     * Get lowercase state.
-     *
-     * @return bool
-     */
-    public function isLowercase()
-    {
-        return $this->lowercase;
-    }
-
-    /**
-     * Get uppercase state.
-     *
-     * @return bool
-     */
-    public function isUppercase()
-    {
-        return $this->uppercase;
-    }
-
-    /**
      * Generate a random hex.
      *
      * @return string
@@ -201,38 +179,6 @@ class Random
     public function hex()
     {
         $this->pattern('[a-f0-9]')->uppercase();
-
-        return $this;
-    }
-
-    /**
-     * Return a string in the proper case.
-     *
-     * @param $string
-     * @return string
-     */
-    private function changeCase($string)
-    {
-        if ($this->isLowercase()) {
-            return strtolower($string);
-        }
-
-        if ($this->isUppercase()) {
-            return strtoupper($string);
-        }
-
-        return $string;
-    }
-
-    /**
-     * Set the lowercase state.
-     *
-     * @param $state
-     * @return $this
-     */
-    public function lowercase($state = true)
-    {
-        $this->mixedcase()->lowercase = $state;
 
         return $this;
     }
@@ -257,23 +203,9 @@ class Random
      * @param int|null $size
      * @return string
      */
-    private function trimToExpectedSize($string, $size = null)
+    protected function trimToExpectedSize($string, $size = null)
     {
         return substr($string, 0, $size ?: $this->getSize());
-    }
-
-    /**
-     * Set case to mixed.
-     *
-     * @return $this
-     */
-    public function mixedcase()
-    {
-        $this->uppercase = false;
-
-        $this->lowercase = false;
-
-        return $this;
     }
 
     /**
@@ -328,19 +260,6 @@ class Random
         return $this;
     }
 
-    /**
-     * Set the uppercase state.
-     *
-     * @param $state
-     * @return $this
-     * @internal param bool $uppercase
-     */
-    public function uppercase($state = true)
-    {
-        $this->mixedcase()->uppercase = $state;
-
-        return $this;
-    }
 
     /**
      * Set the return string size.
