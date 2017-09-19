@@ -11,7 +11,7 @@
 
 ## Features
 
-It generates cryptographically secure random bytes (using `random_bytes()` and `random_int()`) to make:
+It generates cryptographically secure **pseudo-random** bytes (using `random_bytes()` and `random_int()`) to make:
 
 - Strings
 - Numbers (strings or integers)
