@@ -21,7 +21,7 @@ It generates cryptographically secure random bytes (using `random_bytes()` and `
 - Regex patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
 - Raw strings, giving you whatever `random_bytes()` generates
 
-### Faker
+#### Faker
 
 If you have [Faker](https://github.com/fzaninotto/Faker) installed it falls back to it, giving you access to random names, dates, cities, phones, and a lot more.
 
