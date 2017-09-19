@@ -36,7 +36,7 @@ class Random
     {
         try {
             $this->fakerString = $this->getFaker()->{$name}(...$arguments);
-        } catch(\Error $e) {
+        } catch (\Error $e) {
             throw new \Exception('Faker is not installed. Call to undefined method PragmaRX\Random\Random::'.$name);
         }
 
