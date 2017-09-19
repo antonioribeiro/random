@@ -15,10 +15,10 @@ It generates cryptographically secure random bytes (using `random_bytes()` and `
 
 - Strings
 - Numbers (strings or integers)
+- Upper, lower and mixed case
 - Prefixed and suffixed random strings
 - Hexadecimal
-- Patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
-- Upper, lower and mixed case
+- Regex patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
 - Raw strings, giving you whatever `random_bytes()` generates
 
 ### Faker
