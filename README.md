@@ -19,7 +19,9 @@ It generates cryptographically secure random bytes (from `random_bytes()`) for:
 - Patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
 - Upper, lower and mixed case
 
-And also, if you have Faker installed, it will also provide everything you can find on [Faker](https://github.com/fzaninotto/Faker).
+### Faker
+
+If you have [Faker](https://github.com/fzaninotto/Faker) installed it falls back to it, giving you access to random names, dates, cities, phones, and a lot more.
 
 ## Install
 
