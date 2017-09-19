@@ -1,11 +1,11 @@
 # Random
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/pragmarx/random.svg?style=flat-square)](https://packagist.org/packages/pragmarx/random)
+[![Latest Stable Version](https://img.shields.io/packagist/v/pragmarx/random.svg?style=flat-square&update=123)](https://packagist.org/packages/pragmarx/random)
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status](https://scrutinizer-ci.com/g/antonioribeiro/random/badges/build.png?b=master)](https://scrutinizer-ci.com/g/antonioribeiro/random/build-status/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/antonioribeiro/random/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/antonioribeiro/random/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/antonioribeiro/random/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/antonioribeiro/random/?branch=master)
-[![StyleCI](https://styleci.io/repos/103568219/shield)](https://styleci.io/repos/103568219)
+[![Build Status](https://img.shields.io/scrutinizer/build/g/antonioribeiro/random.svg?style=flat-square)](https://scrutinizer-ci.com/g/antonioribeiro/random/build-status/master)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/antonioribeiro/random.svg?style=flat-square)](https://scrutinizer-ci.com/g/antonioribeiro/random/?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/antonioribeiro/random.svg?style=flat-square)](https://scrutinizer-ci.com/g/antonioribeiro/random/?branch=master)
+[![StyleCI](https://styleci.io/repos/103568219/shield)](https://styleci.io/repos/103996703)
 
 #### Generate secure random strings, numbers, bytes, patterns, and a lot more
 
