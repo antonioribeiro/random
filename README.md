@@ -7,14 +7,14 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/antonioribeiro/random/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/antonioribeiro/random/?branch=master)
 [![StyleCI](https://styleci.io/repos/103568219/shield)](https://styleci.io/repos/103568219)
 
-Generate random strings / numbers
+Generate secure random strings, numbers, bytes, patterns, and a lot more
 
 ## Features
 
-It generates cryptographically secure random bytes (using `random_bytes()`) and transforms them to:
+It generates cryptographically secure random bytes (using `random_bytes()` and `random_int()`) to make:
 
 - Strings
-- Numbers (string or integers)
+- Numbers (strings or integers)
 - Prefixed and suffixed random strings
 - Hexadecimal
 - Patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
