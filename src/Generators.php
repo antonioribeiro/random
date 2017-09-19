@@ -4,6 +4,8 @@ namespace PragmaRX\Random;
 
 trait Generators
 {
+    protected $fakerString;
+
     /**
      * Generate a random string.
      *
