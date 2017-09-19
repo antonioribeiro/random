@@ -90,11 +90,11 @@ class Random
     }
 
     /**
-     * Get string pattern.
+     * Configure to get a raw.
      *
      * @return string
      */
-    public function noPattern()
+    public function raw()
     {
         $this->pattern = null;
 

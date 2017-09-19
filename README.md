@@ -11,13 +11,15 @@ Generate random strings / numbers
 
 ## Features
 
-It generates cryptographically secure random bytes (from `random_bytes()`) for:
+It generates cryptographically secure random bytes (using `random_bytes()`) and transforms them to:
+
 - Strings
 - Numbers (string or integers)
 - Prefixed and suffixed random strings
 - Hexadecimal
 - Patterns ([abcd], [aeiou], [A-Z0123], [0-9a-f])
 - Upper, lower and mixed case
+- Raw strings, giving you whatever `random_bytes()` generates
 
 ### Faker
 
@@ -166,12 +168,12 @@ You can also change the faker class, you another one pleases you more:
 $this->random->fakerClass(AnotherFaker\Factory::class)->date()->get();
 ```
 
-#### Disable character filter 
+#### Raw strings
 
-Usually the package returns characters in the range of Base64 (A to Z, a to z and 0 to 9), but you can disable this and make it return whatever random_bytes returns: 
+Usually the package returns characters in the range of Base64 (A to Z, a to z and 0 to 9), but you can completely disable this feature and make it return whatever `random_bytes()` generates: 
 
 ``` php
-$this->random->noPattern()->get();
+$this->random->raw()->get();
 ```
 
 ## Change log

@@ -101,9 +101,9 @@ class RandomTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse(preg_match('/^[a-zE-Z]+$/', $string) == 1);
     }
 
-    public function testNoPattern()
+    public function testRaw()
     {
-        $this->assertTrue(strlen($string = $this->random->noPattern()->size(256)->get()) == 256);
+        $this->assertTrue(strlen($string = $this->random->raw()->size(256)->get()) == 256);
 
         $this->assertFalse(preg_match('/^[a-zA-F0-9]+$/', $string) == 1);
     }
