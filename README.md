@@ -7,7 +7,7 @@
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/antonioribeiro/random.svg?style=flat-square)](https://scrutinizer-ci.com/g/antonioribeiro/random/?branch=master)
 [![StyleCI](https://styleci.io/repos/103568219/shield)](https://styleci.io/repos/103996703)
 
-#### Generate secure random strings, numbers, bytes, patterns, and a lot more
+#### Generate random strings, numbers, bytes, patterns, and a lot more
 
 ## Features
 
