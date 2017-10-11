@@ -103,7 +103,7 @@ To get
 But if you set the size 
 
 ``` php
-$this->random->numeric()->size(3);
+$this->random->numeric()->size(3)->get();
 ```
 
 You'll get a string
