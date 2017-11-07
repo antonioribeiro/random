@@ -2,7 +2,9 @@
 
 namespace PragmaRX\Random;
 
-class RandomTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+
+class RandomTest extends TestCase
 {
     public function setUp()
     {
