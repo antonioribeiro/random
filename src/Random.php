@@ -2,9 +2,20 @@
 
 namespace PragmaRX\Random;
 
+use PragmaRX\Random\Generators\AlphaGenerator;
+use PragmaRX\Random\Generators\ArrayGenerator;
+use PragmaRX\Random\Generators\IntegerGenerator;
+use PragmaRX\Random\Generators\StringGenerator;
+
 class Random
 {
-    use Generators, CharCase, Faker, Trivia;
+    use CharCase,
+        Faker,
+        Trivia,
+        AlphaGenerator,
+        ArrayGenerator,
+        StringGenerator,
+        IntegerGenerator;
 
     const DEFAULT_STRING_SIZE = 16;
 
@@ -12,17 +23,7 @@ class Random
 
     protected $numeric = false;
 
-    protected $start = 0;
-
-    protected $end = PHP_INT_MAX;
-
     protected $size = null;
-
-    protected $array = false;
-
-    protected $items = [];
-
-    protected $count = 1;
 
     protected $pattern = '[A-Za-z0-9]';
 
@@ -46,16 +47,23 @@ class Random
     }
 
     /**
-     * Set the array items count.
+     * Generate a random string.
      *
-     * @param $count
-     * @return $this
+     * @return string|array
      */
-    public function count($count)
+    protected function generate()
     {
-        $this->count = $count;
+        if (! is_null($this->fakerString)) {
+            return $this->fakerString;
+        }
 
-        return $this;
+        if ($this->array) {
+            return $this->generateArray();
+        }
+
+        return $this->numeric
+            ? $this->generateNumeric()
+            : $this->generateAlpha();
     }
 
     /**
@@ -89,16 +97,6 @@ class Random
     }
 
     /**
-     * Get numeric end.
-     *
-     * @return int
-     */
-    public function getEnd()
-    {
-        return $this->end;
-    }
-
-    /**
      * Get string pattern.
      *
      * @return string
@@ -118,26 +116,6 @@ class Random
         $this->pattern = null;
 
         return $this;
-    }
-
-    /**
-     * Get the final string size.
-     *
-     * @return integer
-     */
-    public function getSize()
-    {
-        return $this->size ?: static::DEFAULT_STRING_SIZE;
-    }
-
-    /**
-     * Get numeric start.
-     *
-     * @return int
-     */
-    public function getStart()
-    {
-        return $this->start;
     }
 
     /**
@@ -179,18 +157,6 @@ class Random
     }
 
     /**
-     * Trim string to expected size.
-     *
-     * @param $string
-     * @param int|null $size
-     * @return string
-     */
-    protected function trimToExpectedSize($string, $size = null)
-    {
-        return substr($string, 0, $size ?: $this->getSize());
-    }
-
-    /**
      * Set result to numeric.
      *
      * @param bool $state
@@ -217,19 +183,6 @@ class Random
     }
 
     /**
-     * Set numeric end.
-     *
-     * @param int $end
-     * @return $this
-     */
-    public function end($end)
-    {
-        $this->end = $end;
-
-        return $this;
-    }
-
-    /**
      * Reset one-time values.
      *
      * @return $this
@@ -241,32 +194,6 @@ class Random
         $this->suffix = null;
 
         $this->fakerString = null;
-
-        return $this;
-    }
-
-    /**
-     * Set numeric start.
-     *
-     * @param int $start
-     * @return $this
-     */
-    public function start($start)
-    {
-        $this->start = $start;
-
-        return $this;
-    }
-
-    /**
-     * Set the return string size.
-     *
-     * @param $size
-     * @return $this
-     */
-    public function size($size)
-    {
-        $this->size = $size;
 
         return $this;
     }
