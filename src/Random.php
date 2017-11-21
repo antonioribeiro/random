@@ -13,7 +13,6 @@ class Random
         Faker,
         Trivia,
         AlphaGenerator,
-        ArrayGenerator,
         StringGenerator,
         IntegerGenerator;
 

@@ -44,4 +44,13 @@ trait ArrayGenerator
 
         return $result;
     }
+
+    /**
+     * Generate a random integer.
+     *
+     * @param int $start
+     * @param int $end
+     * @return int
+     */
+    abstract protected function generateRandomInt($start, $end);
 }

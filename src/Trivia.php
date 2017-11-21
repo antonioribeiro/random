@@ -2,10 +2,13 @@
 
 namespace PragmaRX\Random;
 
+use PragmaRX\Random\Generators\ArrayGenerator;
 use PragmaRX\Trivia\Trivia as TriviaService;
 
 trait Trivia
 {
+    use ArrayGenerator;
+
     /**
      * Generate trivia lines.
      *
