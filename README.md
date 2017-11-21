@@ -152,6 +152,12 @@ $this->random->trivia()->get();
 $this->random->trivia()->count(2)->get();
 ```
 
+You'll need to install the Trivia database package:
+
+``` bash
+$ composer require pragmarx/trivia
+```
+
 #### Faker
 
 If you install Faker
