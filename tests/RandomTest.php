@@ -149,6 +149,14 @@ class RandomTest extends TestCase
 
         $this->assertCount(4, $this->random->fakerClass('Unavailable\Namespace\FakerClass')->words(4)->get());
     }
+
+    public function testTrivia()
+    {
+        /// one trivia record has 6 items
+        $this->assertCount(6, $this->random->trivia()->get());
+
+        $this->assertCount(12, $this->random->trivia()->count(12)->get());
+    }
 }
 
 function dd($a)

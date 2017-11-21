@@ -142,6 +142,16 @@ Of course, the same works for suffixes
 $this->random->prefix('!')->suffix('@')->get();
 ```
 
+#### Trivia
+
+There are currently 43982 questions in the trivia database, and this is how you get them:
+
+``` php
+$this->random->trivia()->get();
+
+$this->random->trivia()->count(2)->get();
+```
+
 #### Faker
 
 If you install Faker
