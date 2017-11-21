@@ -4,7 +4,7 @@ namespace PragmaRX\Random;
 
 class Random
 {
-    use Generators, CharCase, Faker;
+    use Generators, CharCase, Faker, Trivia;
 
     const DEFAULT_STRING_SIZE = 16;
 
@@ -17,6 +17,12 @@ class Random
     protected $end = PHP_INT_MAX;
 
     protected $size = null;
+
+    protected $array = false;
+
+    protected $items = [];
+
+    protected $count = 1;
 
     protected $pattern = '[A-Za-z0-9]';
 
@@ -37,6 +43,19 @@ class Random
         }
 
         return $value;
+    }
+
+    /**
+     * Set the array items count.
+     *
+     * @param $count
+     * @return $this
+     */
+    public function count($count)
+    {
+        $this->count = $count;
+
+        return $this;
     }
 
     /**

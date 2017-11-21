@@ -17,6 +17,10 @@ trait Generators
             return $this->fakerString;
         }
 
+        if ($this->array) {
+            return $this->generateArray();
+        }
+
         return $this->numeric
             ? $this->generateNumeric()
             : $this->generateAlpha();
@@ -29,7 +33,17 @@ trait Generators
      */
     protected function generateInteger()
     {
-        return random_int($this->getStart(), $this->getEnd());
+        return $this->generateRandomInt($this->getStart(), $this->getEnd());
+    }
+
+    /**
+     * Generate a random integer.
+     *
+     * @return int
+     */
+    protected function generateRandomInt($start, $end)
+    {
+        return random_int($start, $end);
     }
 
     /**
@@ -81,6 +95,28 @@ trait Generators
     protected function generateAlpha()
     {
         return $this->generateString($this->getAlphaGenerator());
+    }
+
+    /**
+     * Generate random array elements.
+     *
+     * @return array
+     */
+    protected function generateArray()
+    {
+        $result = [];
+
+        $last = count($this->items)-1;
+
+        foreach (range(1, $this->count) as $counter) {
+            $result[] = $this->items[$this->generateRandomInt(0, $last)];
+        }
+
+        if ($this->count == 1) {
+            return $result[0];
+        }
+
+        return $result;
     }
 
     /**
